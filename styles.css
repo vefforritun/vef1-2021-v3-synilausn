@@ -1,0 +1,181 @@
+/* Setjum inn „reset“ sem fjarlægir margin og padding af öllu */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Reiknum stærð á öllum boxum sem border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+/* og látum erfast á allt */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* hjálpar class sem felur sjónrænt en skjálesarar lesa */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+body {
+  margin: 1rem;
+
+  /* Gerum pláss fyrir fixed haus, hæð er cirkuð */
+  padding-top: 7rem;
+}
+
+/* header + navigation á öllum síðum */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  background-color: #fff;
+}
+
+header .content {
+  margin: 1rem auto;
+  width: 50%;
+  
+  text-align: center;
+}
+
+header h2 {
+  margin-bottom: 0.5rem;
+}
+
+nav {
+  margin-bottom: 1rem;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+/* almennt */
+
+main {
+  padding-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* forsíða */
+
+.frontpage .content {
+  float: left;
+  width: 64%;
+  margin-right: 2%;
+}
+
+.frontpage img {
+  max-width: 100%;
+}
+
+.frontpage .video {
+  float: right;
+  width: 33%;
+}
+
+.frontpage .video iframe {
+  max-width: 100%;
+}
+
+.frontpage::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* form */
+
+fieldset {
+  float: left;
+
+  width: 24%;
+  margin: 0 1% 1% 0;
+  padding: 1rem;
+}
+
+.input-field {
+  margin-bottom: 1rem;
+}
+
+.input-field input {
+  width: 100%;
+}
+
+.input-field small {
+  display: block;
+}
+
+select {
+  width: 100%;
+}
+
+button {
+  display: block;
+  clear: both;
+}
+
+/* tafla */
+.table {
+  float: left;
+
+  padding: 1rem;
+  width: 50%;
+}
+
+.table:nth-child(2n+1) {
+  clear: left;
+}
+
+.table table {
+  /* annars verður bil á milli raða */
+  border-spacing: 0;
+
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+
+  padding: 0.25rem;
+}
+
+/* spurt & svarað */
+details {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1rem;
+}
+
+details * {
+  margin-left: 1rem;
+}
+
+details summary {
+  padding-bottom: 1rem;
+}

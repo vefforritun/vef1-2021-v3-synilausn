@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="is">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tölvunarfræði—Sækja um nám</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="content">
+        <h1>Tölvunarfræði</h1>
+        <h2>Sækja um nám</h2>
+
+        <!-- Fyrir skjálesara -->
+        <p class="sr-only"><a href="#efni">Beint í efni</a></p>
+
+        <nav>
+          <ul>
+            <li><a href="../index.html">Forsíða</a></li>
+            <li><a href="apply.html"><strong>Sækja um nám</strong></a></li>
+            <li><a href="courses.html">Áfangar</a></li>
+            <li><a href="faq.html">Spurt & svarað</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="efni">
+      <!--
+      Notum tómt action, sendir á sömu síðu og við erum á.
+      Ef við submittum forminu, getum við séð allar breytur í „querystring“ í URLinu í vafra
+      -->
+      <form action="./" method="get">
+        <!-- Höfum augljósa hópa til að skipta forminu okkar í með <fieldset> -->
+        <fieldset>
+          <legend>Persónuupplýsingar</legend>
+          <!--
+          Við hópum reitum saman með <div>, ekkert annað sem er betra
+          <label> og <input> eru „inline“ element og flæða því utan í hvort annað
+          sem við viljum ekki.
+          -->
+          <div class="input-field">
+            <label for="nafn">Nafn:</label>
+            <input type="text" name="nafn" id="nafn" required aria-describedby="nafn-required">
+            <!--
+            Notum aria hér til að tengja saman auka kröfu sem annars væri ótengd
+            við <input>
+            -->
+            <small id="nafn-required">Gefa verður upp nafn.</small>
+          </div>
+          <div class="input-field">
+            <label for="kennitala">Kennitala:</label>
+            <!--
+            Ef við höfum mörg attribute getum við aukið lesanleika með því 
+            að setja hvert í sér línu
+            -->
+            <input
+              type="text"
+              name="kennitala"
+              id="kennitala"
+              placeholder="000000-0000"
+              required aria-describedby="kennitala-required"
+            >
+            <small id="kennitala-required">Gefa verður upp kennitölu.</small>
+          </div>
+          <div class="input-field">
+            <label for="simi">Sími:</label>
+            <input type="tel" name="simi" id="simi" required aria-describedby="simi-required">
+            <small id="simi-required">Gefa verður upp síma.</small>
+          </div>
+          <div class="input-field">
+            <label for="netfang">Netfang:</label>
+            <input type="email" name="netfang" id="netfang" required aria-describedby="netfang-required">
+            <small id="netfang-required">Gefa verður upp netfang.</small>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Framhaldsskóli</legend>
+          <div class="input-field">
+            <label for="framhaldsskoli">Sími:</label>
+            <!--
+            Hér höfum við lista af framhaldsskólum en hugsanlega vantar einhvern
+            eða viðkomandi vill skrá inn nafn á skóla erlendis. Bjóðum upp á auto-complete
+            en bönnum ekki að skrá sitt eigið.
+            -->
+            <input type="text" name="framhaldsskoli" id="framhaldsskoli" list="framhaldsskolar">
+          </div>
+          <div class="input-field">
+            <!-- Ef input er innan label þurfum við ekki for -->
+            <label>
+              <input type="checkbox" name="lokid">
+              Námi er lokið
+            </label>
+          </div>
+          <div class="input-field">
+            <label for="dagslokid">Lokadagsetning</label>
+            <input type="date" name="dagslokid" id="dagslokid">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><label for="kjorsvid">Kjörsvið</label></legend>
+          <!-- Hér vitum við nákvæmlega hvað er í boði og notum <select> -->
+          <select id="kjorsvid" name="kjorsvid">
+            <option>Almenn tölvunarfræði (Veitir breiðan almennan grunn í tölvunarfræði)</option>
+            <option>Gagnavísindi (Nemendur fá þjálfun í vinnslu, greiningu og framsetningu á gögnum, auk líkangerðar og smíði reiknirita.)</option>
+            <option>Reiknifræði (Gerir nemendur hæfa til þess að takast á við reiknifræðilega líkanagerð og fræðilegri þætti tölvunarfræði)</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fylgigögn</legend>
+          <div class="input-field">
+            <label for="fylgigogn">Fylgigögn:</label>
+            <input type="file" id="fylgigogn" name="fylgigogn">
+          </div>
+          <div class="input-field">
+            <label for="profskirteini">Prófskírteini:</label>
+            <input type="file" id="profskirteini" name="profskirteini">
+          </div>
+          <div class="input-field">
+            <label for="annad">Annað:</label>
+            <input type="file" id="annad" name="annad">
+          </div>
+        </fieldset>
+
+        <datalist id="framhaldsskolar">
+          <option>Borgarholtsskóli</option>
+          <option>Fisktækniskóli Íslands</option>
+          <option>Fjölbrautaskóli Norðurlands vestra</option>
+          <option>Fjölbrautaskóli Snæfellinga</option>
+          <option>Fjölbrautaskóli Suðurlands</option>
+          <option>Fjölbrautaskóli Suðurnesja</option>
+          <option>Fjölbrautaskóli Vesturlands</option>
+          <option>Fjölbrautaskólinn í Breiðholti</option>
+          <option>Fjölbrautaskólinn í Garðabæ</option>
+          <option>Fjölbrautaskólinn við Ármúla</option>
+          <option>Flensborgarskólinn í Hafnarfirði</option>
+          <option>Framhaldsskólinn á Húsavík</option>
+          <option>Framhaldsskólinn á Laugum</option>
+          <option>Framhaldsskólinn í Austur - Skaftafellssýslu</option>
+          <option>Framhaldsskólinn í Mosfellsbæ</option>
+          <option>Framhaldsskólinn í Vestmannaeyjum</option>
+          <option>Hallormsstaðaskóli</option>
+          <option>Hússtjórnarskóli Reykjavíkur</option>
+          <option>Kvennaskólinn í Reykjavík</option>
+          <option>Landbúnaðarháskóli Íslands</option>
+          <option>Menntaskóli Borgarfjarðar</option>
+          <option>Menntaskóli í tónlist</option>
+          <option>Menntaskólinn á Akureyri</option>
+          <option>Menntaskólinn á Ásbrú</option>
+          <option>Menntaskólinn á Egilsstöðum</option>
+          <option>Menntaskólinn á Ísafirði</option>
+          <option>Menntaskólinn á Tröllaskaga</option>
+          <option>Menntaskólinn að Laugarvatni</option>
+          <option>Menntaskólinn í Kópavogi</option>
+          <option>Menntaskólinn í Reykjavík</option>
+          <option>Menntaskólinn við Hamrahlíð</option>
+          <option>Menntaskólinn við Sund</option>
+          <option>Myndlistaskólinn á Akureyri</option>
+          <option>Myndlistaskólinn í Reykjavík</option>
+          <option>Tækniskólinn</option>
+          <option>Verkmenntaskóli Austurlands</option>
+          <option>Verkmenntaskólinn á Akureyri</option>
+          <option>Verzlunarskóli Íslands</option>
+        </datalist>
+
+        <button>Senda umsókn</button>
+      </form>
+    </main>
+  </body>
+</html>
